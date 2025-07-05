@@ -32,6 +32,33 @@
             */
     }
 
+    function validateEmail($data, $fieldName) {
+        global $errorCount;
+
+        if (empty($data)) {
+            echo "\"$fieldName\" is a required field.<br />\n";
+            ++$errorCount; $retval = "";
+        }
+        else {
+            $retval = filter_var($data, FILTER_SANITIZE_EMAIL);
+
+            if (!filter_var($retval, FILTER_VALIDATE_EMAIL)) {
+                echo "\"$fieldName\" is not a valid e-mail address.<br />\n";
+            }
+        }
+    return($retval);
+    /*
+    The function validateEmail() is very similar to validateInput() where it checks the input field for email and will:
+        -throw an error messeage if there is no input data
+        -nest an if statement in the else statement that, once the Email input field has data:
+            -the filter_var() function checks to see if the input field has a valid email and the FILTER_SANITIZE_EMAIL() function
+            will eliminate any illegal characters that aren't part of a valid email address (to avoid XSS)
+            -If the data ISN'T a valid email via the filter_var() function, an error message demanding a valid email address pops up
+        -End result is returned in the $retval variable at the end of the function
+
+    */
+    }
+
     /*
     
     */
