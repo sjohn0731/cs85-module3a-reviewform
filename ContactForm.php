@@ -58,6 +58,30 @@
 
     */
     }
+    function displayForm($Sender, $Email, $Subject, $Message) {
+        ?> <h2 style="text-align: center;">Contact Me</h2>
+        <form name="contact" action="ContactForm.php" method="post">
+            <p>Your Name:
+                <input type="text" name="Sender" value="<?php echo $Sender; ?>" /></p>
+            <p>Your Email:
+                <input type="text" name="Email" value="<?php echo $Email; ?>" /></p>
+            <p>Subject:
+                <input type="text" name="Subject" value="<?php echo $Subject; ?>" /></p>
+            <p>Message:<br />
+                <textarea name="Message"><?php echo $Message; ?></textarea></p>
+            <p><input type="reset" name="Clear Form" />&nbsp; &nbsp;
+                <input type="submit" name="Submit" value="Send Form"></p>
+        </form>
+            /*
+            This function works to:
+            -Build the form in html code
+            -utilize php to validate and sanitize any input data so only email addresses with the proper
+            format are able to be submitted, Only letters (not numbers or special chars) can be entered into the Name field, etc.
+            -have a "Clear Form" button that wipes any data that is in the input field at that moment
+            -have a Submit button to send the message
+
+            */
+    <?php }
 
     /*
     
