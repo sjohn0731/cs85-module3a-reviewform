@@ -109,6 +109,29 @@
     not appear on the screen or shows an error message to the user (if $errorCount is more than 0) 
      */
 
+    if ($ShowForm == TRUE) {
+        if ($errorCount>0)
+            echo "<p>Please re-enter the form information below:</p>\n";
+            displayForm($Sender, $Email, $Subject, $Message);
+        }
+        else
+            {
+            $SenderAddess = "$Sender <$Email>";
+            $Headers = "From: $SenderAddress\nCC: $SenderAddress\n";
+
+            $result = mail("recipient@example.com", $Subject, $Message, $Headers);
+
+            if ($result)
+                echo "<p>Your message has been sent. Thank you, " . $Sender . ".</p>\n";
+            else
+                                echo "<p>There was an error sending your message, " . $Sender . ".</p>\n";
+            }
+        /*
+        If the errorcount is over 0 when the form is submitted, $ShowForm initiates and displays an error message on the webpage displaying the 
+        corrosponding error(s).
+        Otherwise, an email is sent to the sender either confirming a sent message or informing the sender an error occured during submission.
+
+        */
 
 
     /*
