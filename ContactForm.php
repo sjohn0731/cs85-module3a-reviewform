@@ -81,11 +81,33 @@
             -have a Submit button to send the message
 
             */
+        
     <?php }
-
+    $ShowForm = TRUE;
+    $errorCount = 0;
+    $Sender = "";
+    $Email = "";
+    $Subject = "";
+    $Message = "";
     /*
-    
+    -Once outside the loop, create the variables that will be affected by the PHP logic:
+        -A variable with a Boolean value of true
+        -Multiple variables that contain empty strings 
     */
+
+    if (isset($_POST['Submit'])) {
+        $Sender = validateInput($_POST['Sender'],"Your Name");
+        $Email = validateEmail($_POST['Email'],"Your E-mail");
+        $Subject = validateInput($_POST['Subject'],"Subject");
+        $Message = validateInput($_POST['Message'],"Message");
+        if ($errorCount==0)
+            $ShowForm = FALSE;
+        else
+            $ShowForm -= TRUE;
+
+    } /*This code block seems to validate all the information input and introduce the showForm variable, which will (if the $errorCount is 0) 
+    not appear on the screen or shows an error message to the user (if $errorCount is more than 0) 
+     */
 
 
 
