@@ -136,6 +136,20 @@
 
     /*
     REFLECTION:
+    *What does each function do?*
+    the validateInput() function.... validates the input field and determines that either:
+            -Throws an error message if no data is present,
+            -Proceeds and makes the data more presentable/more secure
+    the validateEmail() function is similar to validateInput, except it makes sure the email is in the proper format and a valid address
+    the displayForm() function creates an input form to enter data
+    *How is user input protected?*
+    Built in php functions like FILTER_VALIDATE_EMAIL, FILTER_SANITIZE and $_POST help protect data in transit and use only the necessesary characters/format to avoid hackers
+    *What were the most confusing parts?*
+    Understanding the "pathway" for how the variables outside of the functions and code blocks change as the code runs.
+    *What could be improved?*
+    I would probably have the php code be its own .php file and use some html code to plug the php code in the body
+    *Why send a copy of the form to the sender?*
+    To give some sort of notification to the message sender that somehting went wrong.
 
     */
     ?>
